@@ -24,12 +24,12 @@ public class Getfour {
             for (int j = 5; j >= 0; j--) {
                 // player 1 and player 2
                 if (board[j][i] == 1) {
-                    if (previous == 1) {
+                    if (previous == 1 || (previous != 1 && count1 == 0)) {
                         count1++;
                         count2 = 0;
                     }
                 } else if (board[j][i] == 2) {
-                    if (previous == 2) {
+                    if (previous == 2 || (previous != 2 && count2 == 0)) {
                         count2++;
                         count1 = 0;
                     }
@@ -56,12 +56,12 @@ public class Getfour {
             previous = board[i][0];
             for (int j = 0; j < 7; j++) {
                 if (board[i][j] == 1) {
-                    if (previous == 1) {
+                    if (previous == 1 || (previous != 1 && count1 == 0)) {
                         count1++;
                         count2 = 0;
                     }
                 } else if (board[i][j] == 2) {
-                    if (previous == 2) {
+                    if (previous == 2 || (previous != 2 && count2 == 0)) {
                         count2++;
                         count1 = 0;
                     }
@@ -90,14 +90,14 @@ public class Getfour {
             previous = board[i][0];
             while (j >= 0) {
                 if (board[j][k] == 1) {
-                    if (previous == 1) {
+                    if (previous == 1 || (previous != 1 && count1 == 0)) {
                         count1++;
                         count2 = 0;
                     }
                 }
 
                 if (board[j][k] == 2) {
-                    if (previous == 2) {
+                    if (previous == 2 || (previous != 2 && count2 == 0)) {
                         count2++;
                         count1 = 0;
                     }
@@ -123,14 +123,14 @@ public class Getfour {
                 int j = 5, k = i;
                 while (k < 7) {
                     if (board[j][k] == 1) {
-                        if (previous == 1) {
+                        if (previous == 1 || (previous != 1 && count1 == 0)) {
                             count1++;
                             count2 = 0;
                         }
                     }
 
                     if (board[j][k] == 2) {
-                        if (previous == 2) {
+                        if (previous == 2 || (previous != 2 && count2 == 0)) {
                             count2++;
                             count1 = 0;
                         }
@@ -161,14 +161,14 @@ public class Getfour {
             int j = i, k = 6;
             while (j >= 0) {
                 if (board[j][k] == 1) {
-                    if (previous == 1) {
+                    if (previous == 1 || (previous != 1 && count1 == 0)) {
                         count1++;
                         count2 = 0;
                     }
                 }
 
                 if (board[j][k] == 2) {
-                    if (previous == 2) {
+                    if (previous == 2 || (previous != 2 && count2 == 0)) {
                         count2++;
                         count1 = 0;
                     }
@@ -185,23 +185,23 @@ public class Getfour {
             }
         }
 
-        /*// second half of board
+        // second half of board
         if (winner == 0) {
-            count1 = 0;
-            count2 = 0;
-            for (int i = 4; i >= 0; i--) {
-                previous = board[i][6];
-                int j = i, k = 6;
-                while (j >= 0) {
+            for (int i = 5; i >= 0; i--) {
+                count1 = 0;
+                count2 = 0;
+                previous = board[5][i];
+                int j = 5, k = i;
+                while (k >= 0) {
                     if (board[j][k] == 1) {
-                        if (previous == 1) {
+                        if (previous == 1 || (previous != 1 && count1 == 0)) {
                             count1++;
                             count2 = 0;
                         }
                     }
 
                     if (board[j][k] == 2) {
-                        if (previous == 2) {
+                        if (previous == 2 || (previous != 2 && count2 == 0)) {
                             count2++;
                             count1 = 0;
                         }
@@ -217,7 +217,7 @@ public class Getfour {
                     }
                 }
             }
-        }*/
+        }
 
         return winner;
     }
