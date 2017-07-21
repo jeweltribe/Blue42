@@ -4,6 +4,8 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Getfour {
+    
+    
 
     public static void displayBoard(int board[][]) {
         for (int i = 0; i < 6; i++) {
@@ -304,8 +306,14 @@ public class Getfour {
             System.out.println();
             displayBoard(connect4Board);
 
-            column = read.nextInt();
-            changeBoard(column - 1, player, connect4Board);
+            
+            try {
+               column = read.nextInt();
+               changeBoard(column - 1, player, connect4Board); 
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println(e);
+                System.out.println("Pick a number between 1 and 7!");
+            }
             status = checkBoardStatus(connect4Board);
         }
         if (status == 1) {
