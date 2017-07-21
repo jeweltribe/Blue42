@@ -1,11 +1,14 @@
 package getfour;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Getfour {
     
-    
+    List row = new ArrayList();
+    List column = new ArrayList();
 
     public static void displayBoard(int board[][]) {
         for (int i = 0; i < 6; i++) {
@@ -246,25 +249,21 @@ public class Getfour {
     }
 
     public static int checkBoardStatus(int board[][]) {
-        int vert = verticalWinner(board);
-        int horiz = horizontalWinner(board);
-        int diag1 = diagonalWinner1(board);
-        int diag2 = diagonalWinner2(board);
-        int status = fullBoard(board);
+        int vert, horiz, diag1, diag2, status;
 
-        if (vert > 0) {
+        if ((vert = verticalWinner(board)) > 0) {
             return vert;
         }
-        if (horiz > 0) {
+        if ((horiz = horizontalWinner(board)) > 0) {
             return horiz;
         }
-        if (diag1 > 0) {
+        if ((diag1 = diagonalWinner1(board)) > 0) {
             return diag1;
         }
-        if (diag2 > 0) {
+        if ((diag2 = diagonalWinner2(board)) > 0) {
             return diag2;
         }
-        
+        status = fullBoard(board);
         if (status == 0) {
             initializeBoard(board);
         }
