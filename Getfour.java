@@ -221,12 +221,34 @@ public class Getfour {
 
         return winner;
     }
+    
+    public static void initializeBoard(int board[][]) {
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 7; j++) {
+                board[i][j] = 0;
+            }
+        }
+    }
+    
+    // no winner 
+    public static int fullBoard(int board[][]) {
+        int emptyCircles = 0;
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 7; j++) {
+                if (board[i][j] == 0) {
+                    emptyCircles++;
+                }
+            }
+        }
+        return emptyCircles;
+    }
 
     public static int checkBoardStatus(int board[][]) {
         int vert = verticalWinner(board);
         int horiz = horizontalWinner(board);
         int diag1 = diagonalWinner1(board);
         int diag2 = diagonalWinner2(board);
+        int status = fullBoard(board);
 
         if (vert > 0) {
             return vert;
@@ -240,7 +262,11 @@ public class Getfour {
         if (diag2 > 0) {
             return diag2;
         }
-
+        
+        if (status == 0) {
+            initializeBoard(board);
+        }
+        
         return 0;
     }
 
